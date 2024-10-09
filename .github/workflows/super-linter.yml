@@ -1,7 +1,7 @@
 ---
 name: Lint
 
-on: # yamllint disable-line rule:truthy
+on:
     push: null
 
 permissions:
@@ -25,6 +25,7 @@ jobs:
               uses: super-linter/super-linter@v7.1.0
               env:
                   # To report GitHub Actions status checks
+                  LINTER_RULES_PATH: ./.github/workflows/linters/cppcheck-suppressions.txt
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   VALIDATE_ALL_CODEBASE: false
                   VALIDATE_CLANG_FORMAT: false
