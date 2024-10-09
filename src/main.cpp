@@ -1,5 +1,5 @@
 // Copyright 2024 Vianney Veremme
-#include "main.h"
+#include "../include/main.h"
 
 #include <iostream>
 
