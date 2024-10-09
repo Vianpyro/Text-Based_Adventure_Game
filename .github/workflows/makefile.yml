@@ -23,7 +23,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: compiled-binary
-        path: ./bin/tests_suite
+        path: ./bin/test_suite
         retention-days: 3
 
   test-valgrind:
