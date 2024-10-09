@@ -4,11 +4,11 @@ Welcome to **Shattered Kingdom**, a text-based RPG where you take on the role of
 
 ## Features
 
--   **Classes**: Choose between **Warrior**, **Mage**, or **Rogue**, each with unique abilities and playstyles.
--   **Exploration**: Journey through the **Frostbound Peaks**, **Sunken Ruins**, **Forbidden Forest**, **Ashen Wastes**, and **Abyssal Tower**.
--   **Combat**: Engage in turn-based battles with mythical creatures and rival warlords.
--   **Quests and Choices**: Complete side quests, make moral decisions, and shape the future of Elyndor through your actions.
--   **Multiple Endings**: Your choices throughout the game determine the fate of the kingdom.
+- **Classes**: Choose between **Warrior**, **Mage**, or **Rogue**, each with unique abilities and playstyles.
+- **Exploration**: Journey through the **Frostbound Peaks**, **Sunken Ruins**, **Forbidden Forest**, **Ashen Wastes**, and **Abyssal Tower**.
+- **Combat**: Engage in turn-based battles with mythical creatures and rival warlords.
+- **Quests and Choices**: Complete side quests, make moral decisions, and shape the future of Elyndor through your actions.
+- **Multiple Endings**: Your choices throughout the game determine the fate of the kingdom.
 
 ## Inspiration
 
@@ -16,10 +16,10 @@ The world of Elyndor and the plot of **Shattered Kingdom** are inspired by class
 
 ## Technologies Used
 
--   **C++**: The game is written in C++ to take advantage of object-oriented programming and memory management.
--   **STL**: Utilizes the Standard Template Library for efficient handling of player inventory, quests, and game logic.
--   **File I/O**: Supports saving and loading game progress using file streams.
--   **Smart Pointers**: Implements modern C++ techniques like smart pointers to manage memory and avoid leaks.
+- **C++**: The game is written in C++ to take advantage of object-oriented programming and memory management.
+- **STL**: Utilizes the Standard Template Library for efficient handling of player inventory, quests, and game logic.
+- **File I/O**: Supports saving and loading game progress using file streams.
+- **Smart Pointers**: Implements modern C++ techniques like smart pointers to manage memory and avoid leaks.
 
 ## Getting Started
 

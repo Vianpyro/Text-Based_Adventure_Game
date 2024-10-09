@@ -1,5 +1,6 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+// Copyright 2024 Vianney Veremme
+#ifndef INCLUDE_MAIN_H_
+#define INCLUDE_MAIN_H_
 
 #include <string>
 
@@ -10,4 +11,4 @@ const char* GAME_TITLE = "Shattered Kingdom";
 void displayWelcomeMessage();
 void displayGoodbyeMessage();
 
-#endif  // MAIN_H_
+#endif  // INCLUDE_MAIN_H_
