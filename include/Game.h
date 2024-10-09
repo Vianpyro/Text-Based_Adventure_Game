@@ -8,7 +8,7 @@
 extern const char* GAME_TITLE;
 
 class Game {
-   public:
+ public:
     bool isRunning;
 
     void initialize();
