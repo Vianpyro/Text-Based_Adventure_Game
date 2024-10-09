@@ -1,8 +1,9 @@
 // Copyright 2024 Vianney Veremme
 #include "../include/main.h"
-#include "../include/Game.h"
 
 #include <iostream>
+
+#include "../include/Game.h"
 
 int main() {
     Game game;

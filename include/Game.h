@@ -8,14 +8,14 @@
 extern const char* GAME_TITLE;
 
 class Game {
-    public:
-        bool isRunning;
+   public:
+    bool isRunning;
 
-        void initialize();
-        bool isGameOver();
-        void displayMenu();
-        void processInput();
-        void update();
+    void initialize();
+    bool isGameOver();
+    void displayMenu();
+    void processInput();
+    void update();
 };
 
 #endif  // INCLUDE_GAME_H_
