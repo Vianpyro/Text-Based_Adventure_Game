@@ -28,7 +28,9 @@ jobs:
     - name: Create artifact
       uses: actions/upload-artifact@v4
       with:
-        name: bin/ShatteredKingdom
+        name: compiled-binary
+        path: ./bin/ShatteredKingdom
+        retention-days: 3
 
   test-valgrind:
     name: Test Memory Leaks with Valgrind
