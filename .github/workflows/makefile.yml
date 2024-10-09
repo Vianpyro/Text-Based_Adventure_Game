@@ -16,20 +16,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: make
-
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
+    - name: Build Project and Run Tests
       run: make distcheck
 
     - name: Create artifact
       uses: actions/upload-artifact@v4
       with:
         name: compiled-binary
-        path: ./bin/ShatteredKingdom
+        path: ./bin/tests_suite
         retention-days: 3
 
   test-valgrind:
@@ -37,4 +31,4 @@ jobs:
     needs: compile
     uses: Vianpyro/Valgrind/.github/workflows/valgrind.yml@v2
     with:
-      name: ShatteredKingdom
+      name: test_suite
