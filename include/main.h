@@ -4,8 +4,7 @@
 #include <string>
 
 // Game constants
-const std::string GAME_TITLE = "Shattered Kingdom";
-const int MAX_PLAYERS = 4;
+const char* GAME_TITLE = "Shattered Kingdom";
 
 // Utility functions (if needed)
 void displayWelcomeMessage();

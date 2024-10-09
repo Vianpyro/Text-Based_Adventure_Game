@@ -16,18 +16,6 @@ int main() {
     // Show welcome message
     displayWelcomeMessage();
 
-    // // Create the game object
-    // Game game;
-    // game.initialize();
-
-    // // Main game loop
-    // while (!game.isGameOver())
-    // {
-    //     game.displayMenu();  // Show menu
-    //     game.processInput(); // Handle player input
-    //     game.update();       // Update game state
-    // }
-
     // Show goodbye message
     displayGoodbyeMessage();
     return 0;
