@@ -30,12 +30,12 @@ To run this project, you will need a C++ compiler (such as `g++` or `clang`).
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/shattered-kingdom.git
+   git clone https://github.com/Vianpyro/Text-Based_Adventure_Game.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd shattered-kingdom
+   cd Text-Based_Adventure_Game
    ```
 
 3. Compile the code:
