@@ -11,4 +11,4 @@ const int MAX_PLAYERS = 4;
 void displayWelcomeMessage();
 void displayGoodbyeMessage();
 
-#endif // MAIN_H_
+#endif  // MAIN_H_

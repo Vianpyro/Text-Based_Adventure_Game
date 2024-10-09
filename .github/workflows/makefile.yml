@@ -1,8 +1,13 @@
+---
 name: Makefile CI
 
 on:
   push: null
 
+permissions:
+  contents: read # This is sufficient for read access.
+  statuses: write # This is needed to update status checks.
+  
 jobs:
   build:
 

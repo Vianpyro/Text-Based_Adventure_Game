@@ -1,18 +1,15 @@
 #include <cassert>
 #include <iostream>
 
-void testAddition()
-{
+void testAddition() {
     assert(1 + 1 == 2);
 }
 
-void testSubtraction()
-{
+void testSubtraction() {
     assert(2 - 1 == 1);
 }
 
-int main()
-{
+int main() {
     std::cout << "Running tests..." << std::endl;
     testAddition();
     testSubtraction();

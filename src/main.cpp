@@ -1,20 +1,18 @@
-#include <iostream>
 #include "main.h"
 
+#include <iostream>
+
 // Function to display the welcome message
-void displayWelcomeMessage()
-{
+void displayWelcomeMessage() {
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
 }
 
 // Function to display the goodbye message
-void displayGoodbyeMessage()
-{
+void displayGoodbyeMessage() {
     std::cout << "Thank you for playing " << GAME_TITLE << "!" << std::endl;
 }
 
-int main()
-{
+int main() {
     // Show welcome message
     displayWelcomeMessage();
 
