@@ -31,6 +31,11 @@ $(TEST_BIN): $(TEST_OBJS)
 	@mkdir -p $(BIN_DIR)
 	$(CXX) $(TEST_OBJS) -o $(TEST_BIN) $(CXXFLAGS)
 
+# Pattern rule for test objects
+$(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
+
 check: $(TEST_BIN)
 	$(TEST_BIN)
 
