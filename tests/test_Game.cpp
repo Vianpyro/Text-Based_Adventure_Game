@@ -1,3 +1,4 @@
+// Copyright 2024 Vianney Veremme
 #include <cassert>
 
 #include "../include/Game.h"

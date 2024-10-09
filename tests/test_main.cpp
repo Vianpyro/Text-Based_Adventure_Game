@@ -1,3 +1,4 @@
+// Copyright 2024 Vianney Veremme
 #include <stdio.h>
 
 void run_tests_game();
