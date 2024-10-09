@@ -27,7 +27,7 @@ jobs:
                   # To report GitHub Actions status checks
                   LINTER_RULES_PATH: ./.github/workflows/linters/cppcheck-suppressions.txt
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  VALIDATE_ALL_CODEBASE: false
+                  VALIDATE_ALL_CODEBASE: true
                   VALIDATE_CLANG_FORMAT: false
                   VALIDATE_JSON_PRETTIER: false
                   VALIDATE_MARKDOWN_PRETTIER: false
