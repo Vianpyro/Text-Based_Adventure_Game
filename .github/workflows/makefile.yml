@@ -7,10 +7,10 @@ on:
 permissions:
   contents: read # This is sufficient for read access.
   statuses: write # This is needed to update status checks.
-  
-jobs:
-  build:
 
+jobs:
+  compile:
+    name: Compile C++ Project
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,13 @@ jobs:
 
     - name: Run distcheck
       run: make distcheck
+
+    - name: Create artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: bin/ShatteredKingdom
+
+  test-valgrind:
+    name: Test Memory Leaks with Valgrind
+    needs: compile
+    uses: Vianpyro/Valgrind@v1
