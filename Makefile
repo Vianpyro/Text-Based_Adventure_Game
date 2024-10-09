@@ -39,7 +39,11 @@ $(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
 check: $(TEST_BIN)
 	$(TEST_BIN)
 
+# Adding the distcheck target
+distcheck: all check
+	@echo "Distcheck: All checks passed successfully!"
+
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
-.PHONY: all check clean
+.PHONY: all check clean distcheck
