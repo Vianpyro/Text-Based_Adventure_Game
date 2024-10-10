@@ -61,6 +61,25 @@ void Game::loadStory() {
     std::cout << "Story loaded!" << std::endl;
 }
 
+void Game::printStory() {
+    for (const auto& [id, segment] : storySegments) {
+        std::cout << "Segment ID: " << id << std::endl;
+        std::cout << "Description: " << segment.description << std::endl;
+
+        std::cout << "Choices:" << std::endl;
+        for (const auto& [choiceId, choiceText] : segment.choices) {
+            std::cout << "  Choice ID: " << choiceId << " - " << choiceText << std::endl;
+        }
+
+        std::cout << "Next Segment IDs:" << std::endl;
+        for (const auto& [choiceId, nextId] : segment.nextSegmentIds) {
+            std::cout << "  Choice ID: " << choiceId << " -> Next Segment ID: " << nextId << std::endl;
+        }
+
+        std::cout << "------------------------" << std::endl;
+    }
+}
+
 void Game::processInput() {
     int choice;
     std::cout << "Enter your choice: ";
@@ -88,5 +107,5 @@ void Game::processInput() {
 }
 
 void Game::update() {
-    // Placeholder for game update logic
+    printStory();
 }

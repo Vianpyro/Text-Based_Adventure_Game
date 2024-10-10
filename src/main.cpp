@@ -13,9 +13,9 @@ int main() {
 
     // Game loop
     while (!game.isGameOver()) {
+        game.update();
         game.displayMenu();
         game.processInput();
-        game.update();
     }
 
     return 0;

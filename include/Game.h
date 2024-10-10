@@ -23,6 +23,7 @@ class Game {
     bool isGameOver();
     void displayMenu();
     void loadStory();
+    void printStory();
     void processInput();
     void update();
 
