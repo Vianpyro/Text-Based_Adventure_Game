@@ -1,8 +1,13 @@
 // Copyright 2024 Vianney Veremme
 #include "../include/Game.h"
 
+#include <fstream>
 #include <iostream>
 #include <limits>
+
+#include "nlohmann/json.hpp"
+
+using json = nlohmann::json;
 
 const char* GAME_TITLE = "Shattered Kingdom";
 
@@ -32,6 +37,30 @@ void Game::displayMenu() {
     std::cout << "2. Quit" << std::endl;
 }
 
+void Game::loadStory() {
+    std::ifstream file("assets/quests/plot.json");
+    json storyData;
+    file >> storyData;
+
+    for (auto& [id, segment] : storyData.items()) {
+        StorySegment storySegment;
+        storySegment.description = segment["description"];
+
+        for (auto& [choiceId, choiceText] : segment["choices"].items()) {
+            storySegment.choices[std::stoi(choiceId)] = choiceText;
+        }
+
+        for (auto& [choiceId, nextId] : segment["nextSegmentIds"].items()) {
+            storySegment.nextSegmentIds[std::stoi(choiceId)] = nextId;
+        }
+
+        storySegments[std::stoi(id)] = storySegment;
+    }
+
+    // Tell the user the story has been loaded
+    std::cout << "Story loaded!" << std::endl;
+}
+
 void Game::processInput() {
     int choice;
     std::cout << "Enter your choice: ";
@@ -47,6 +76,7 @@ void Game::processInput() {
     switch (choice) {
         case 1:
             std::cout << "Starting game..." << std::endl;
+            loadStory();
             break;
         case 2:
             std::cout << "Quitting game..." << std::endl;
