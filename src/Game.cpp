@@ -6,6 +6,14 @@
 
 const char* GAME_TITLE = "Shattered Kingdom";
 
+void Game::endGame() {
+    // Show goodbye message
+    std::cout << "Thanks for playing " << GAME_TITLE << "!" << std::endl;
+
+    // Set game state
+    isRunning = false;
+}
+
 void Game::initialize() {
     // Show welcome message
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
@@ -41,8 +49,8 @@ void Game::processInput() {
             std::cout << "Starting game..." << std::endl;
             break;
         case 2:
-            isRunning = false;
             std::cout << "Quitting game..." << std::endl;
+            endGame();
             break;
         default:
             std::cout << "Invalid choice. Please try again." << std::endl;

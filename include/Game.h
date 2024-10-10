@@ -11,6 +11,7 @@ class Game {
  public:
     bool isRunning;
 
+    void endGame();
     void initialize();
     bool isGameOver();
     void displayMenu();
