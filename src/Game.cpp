@@ -2,6 +2,7 @@
 #include "../include/Game.h"
 
 #include <iostream>
+#include <limits>
 
 const char* GAME_TITLE = "Shattered Kingdom";
 
@@ -27,6 +28,13 @@ void Game::processInput() {
     int choice;
     std::cout << "Enter your choice: ";
     std::cin >> choice;
+
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input. Please enter a number." << std::endl;
+        return;
+    }
 
     switch (choice) {
         case 1:
