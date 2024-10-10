@@ -21,6 +21,10 @@ The world of Elyndor and the plot of **Shattered Kingdom** are inspired by class
 - **File I/O**: Supports saving and loading game progress using file streams.
 - **Smart Pointers**: Implements modern C++ techniques like smart pointers to manage memory and avoid leaks.
 
+## Plot
+
+Curious about the story of **Shattered Kingdom**? Learn more about the world of **Elyndor**, its history, and your mission to reclaim the **Shattered Crown** on our [Wiki Plot Page](https://github.com/Vianpyro/Text-Based_Adventure_Game/wiki/Plot:-The-Shattered-Kingdom).
+
 ## Getting Started
 
 ### Prerequisites
@@ -44,12 +48,18 @@ To run this project, you will need a C++ compiler (such as `g++` or `clang`).
 3. Compile the code:
 
     ```bash
-    g++ main.cpp -o ShatteredKingdom
+    make all
     ```
 
-4. Run the game:
+4. Run the Unit Tests (optional):
+
     ```bash
-    ./ShatteredKingdom
+    make distcheck
+    ```
+
+5. Run the game:
+    ```bash
+    ./bin/ShatteredKingdom
     ```
 
 ## Contributing
