@@ -68,12 +68,14 @@ void Game::printStory() {
 
         std::cout << "Choices:" << std::endl;
         for (const auto& [choiceId, choiceText] : segment.choices) {
-            std::cout << "  Choice ID: " << choiceId << " - " << choiceText << std::endl;
+            std::cout << "  Choice ID: " << choiceId
+                      << " - " << choiceText << std::endl;
         }
 
         std::cout << "Next Segment IDs:" << std::endl;
         for (const auto& [choiceId, nextId] : segment.nextSegmentIds) {
-            std::cout << "  Choice ID: " << choiceId << " -> Next Segment ID: " << nextId << std::endl;
+            std::cout << "  Choice ID: " << choiceId
+                      << " -> Next Segment ID: " << nextId << std::endl;
         }
 
         std::cout << "------------------------" << std::endl;
