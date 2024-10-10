@@ -10,8 +10,8 @@ extern const char* GAME_TITLE;
 
 struct StorySegment {
     std::string description;
-    std::unordered_map<int, std::string> choices;  // map choice number to description
-    std::unordered_map<int, int> nextSegmentIds;   // map choice number to next segment ID
+    std::unordered_map<int, std::string> choices;
+    std::unordered_map<int, int> nextSegmentIds;
 };
 
 class Game {
