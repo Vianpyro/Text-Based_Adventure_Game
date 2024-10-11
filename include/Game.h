@@ -23,6 +23,7 @@ struct StorySegment {
 class Game {
  public:
     void endGame();
+    void initialize();
     bool isGameOver();
     void printStory();
     void processInput();
@@ -34,7 +35,6 @@ class Game {
     GameState gameState;
     std::unordered_map<int, StorySegment> storySegments;
 
-    void initialize();
     void displayMainMenu();
     int getValidatedChoice();
     void loadStory();
