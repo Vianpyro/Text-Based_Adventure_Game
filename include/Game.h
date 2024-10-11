@@ -2,8 +2,9 @@
 #ifndef INCLUDE_GAME_H_
 #define INCLUDE_GAME_H_
 
-#include <string>
 #include <unordered_map>
+
+#include "Story.h"
 
 // Game constants
 extern const char* GAME_TITLE;
@@ -14,18 +15,11 @@ enum class GameState {
     GameOver
 };
 
-struct StorySegment {
-    std::string description;
-    std::unordered_map<int, std::string> choices;
-    std::unordered_map<int, int> nextSegmentIds;
-};
-
 class Game {
  public:
     void endGame();
     void initialize();
     bool isGameOver();
-    void printStory();
     void processInput();
     void update();
     void showMainMenu();
@@ -33,11 +27,10 @@ class Game {
  private:
     int currentSegmentId;
     GameState gameState;
-    std::unordered_map<int, StorySegment> storySegments;
+    Story story;
 
     void displayMainMenu();
     int getValidatedChoice();
-    void loadStory();
     void processMainMenuInput();
 };
 
