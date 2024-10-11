@@ -23,21 +23,22 @@ struct StorySegment {
 class Game {
  public:
     void endGame();
-    void initialize();
     bool isGameOver();
-    void displayMainMenu();
-    void loadStory();
     void printStory();
     void processInput();
-    void processMainMenuInput();
     void update();
+    void showMainMenu();
 
  private:
     int currentSegmentId;
     GameState gameState;
     std::unordered_map<int, StorySegment> storySegments;
 
+    void initialize();
+    void displayMainMenu();
     int getValidatedChoice();
+    void loadStory();
+    void processMainMenuInput();
 };
 
 #endif  // INCLUDE_GAME_H_

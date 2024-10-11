@@ -134,18 +134,7 @@ void Game::printStory() {
 void Game::processInput() {
     int choice = getValidatedChoice();
 
-    switch (choice) {
-        case 1:
-            std::cout << "Starting game..." << std::endl;
-            loadStory();
-            break;
-        case 2:
-            std::cout << "Quitting game..." << std::endl;
-            endGame();
-            break;
-        default:
-            std::cout << "Invalid choice. Please try again." << std::endl;
-    }
+    std::cout << "You chose: " << choice << std::endl;
 }
 
 void Game::processMainMenuInput() {
@@ -169,4 +158,9 @@ void Game::processMainMenuInput() {
 
 void Game::update() {
     printStory();
+}
+
+void Game::showMainMenu() {
+    displayMainMenu();
+    processMainMenuInput();
 }

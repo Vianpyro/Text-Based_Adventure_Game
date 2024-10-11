@@ -8,8 +8,8 @@
 int main() {
     Game game;
 
-    // Show welcome message
-    game.displayMainMenu();
+    // Show the main menu message
+    game.showMainMenu();
 
     // Game loop
     while (!game.isGameOver()) {
