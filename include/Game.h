@@ -5,6 +5,7 @@
 #include <unordered_map>
 
 #include "Story.h"
+#include "Utility.h"
 
 // Game constants
 extern const char* GAME_TITLE;
@@ -30,7 +31,6 @@ class Game {
     Story story;
 
     void displayMainMenu();
-    int getValidatedChoice();
     void processMainMenuInput();
 };
 
