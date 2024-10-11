@@ -1,0 +1,24 @@
+{
+    "1": {
+        "description": "You stand at the crossroads...",
+        "choices": {
+            "1": "Go left into the forest.",
+            "2": "Go right to the village."
+        },
+        "nextSegmentIds": {
+            "1": 2,
+            "2": 3
+        }
+    },
+    "2": {
+        "description": "You venture into the dark forest...",
+        "choices": {
+            "1": "Fight the wolf.",
+            "2": "Run away."
+        },
+        "nextSegmentIds": {
+            "1": 4,
+            "2": 5
+        }
+    }
+}

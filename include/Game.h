@@ -10,14 +10,17 @@
 // Game constants
 extern const char* GAME_TITLE;
 
+enum class GameState {
+    MainMenu,
+    InGame,
+    GameOver
+};
+
 class Game {
  public:
-    bool isRunning;
-
     void endGame();
     void initialize();
     bool isGameOver();
-    void displayMenu();
     void processInput();
     void update();
     void showMainMenu();

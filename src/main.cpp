@@ -8,15 +8,16 @@
 int main() {
     Game game;
 
-    // Show welcome message
-    game.initialize();
+    // Show the main menu message
+    game.showMainMenu();
 
     // Game loop
     while (!game.isGameOver()) {
-        game.displayMenu();
         game.processInput();
         game.update();
     }
+
+    game.endGame();
 
     return 0;
 }
