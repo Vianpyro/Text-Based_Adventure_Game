@@ -66,7 +66,7 @@ void Story::loadStory() {
     // Indicate the story has been loaded successfully
     std::cout << "Story loaded! Total segments: "
               << storySegments.size() << std::endl;
-};
+}
 
 void Story::printStory() {
     for (const auto& [id, segment] : storySegments) {
@@ -87,4 +87,4 @@ void Story::printStory() {
 
         std::cout << "------------------------" << std::endl;
     }
-};
+}
