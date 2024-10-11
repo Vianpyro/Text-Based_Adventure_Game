@@ -64,7 +64,8 @@ void Game::loadStory() {
     try {
         file >> storyData;
     } catch (const std::exception& e) {
-        std::cerr << "Error: Failed to parse JSON data - " << e.what() << std::endl;
+        std::cerr << "Error: Failed to parse JSON data - "
+                  << e.what() << std::endl;
         return;
     }
 
@@ -76,7 +77,8 @@ void Game::loadStory() {
         if (segment.contains("description")) {
             storySegment.description = segment["description"];
         } else {
-            std::cerr << "Warning: Missing 'description' for story segment " << id << std::endl;
+            std::cerr << "Warning: Missing 'description' for story segment "
+                      << id << std::endl;
             continue;  // Skip this segment if essential data is missing
         }
 
@@ -86,7 +88,8 @@ void Game::loadStory() {
                 storySegment.choices[std::stoi(choiceId)] = choiceText;
             }
         } else {
-            std::cerr << "Warning: Missing 'choices' for story segment " << id << std::endl;
+            std::cerr << "Warning: Missing 'choices' for story segment "
+                      << id << std::endl;
         }
 
         // Parse next segment IDs if they exist
@@ -95,14 +98,16 @@ void Game::loadStory() {
                 storySegment.nextSegmentIds[std::stoi(choiceId)] = nextId;
             }
         } else {
-            std::cerr << "Warning: Missing 'nextSegmentIds' for story segment " << id << std::endl;
+            std::cerr << "Warning: Missing 'nextSegmentIds' for story segment "
+                      << id << std::endl;
         }
 
         storySegments[std::stoi(id)] = storySegment;
     }
 
     // Indicate the story has been loaded successfully
-    std::cout << "Story loaded! Total segments: " << storySegments.size() << std::endl;
+    std::cout << "Story loaded! Total segments: "
+              << storySegments.size() << std::endl;
 }
 
 void Game::printStory() {
