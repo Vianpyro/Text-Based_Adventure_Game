@@ -16,7 +16,7 @@ void Game::endGame() {
     gameState = GameState::GameOver;
 }
 
-int getValidatedChoice() {
+int Game::getValidatedChoice() {
     int choice;
     while (true) {
         std::cout << "Enter your choice: ";
