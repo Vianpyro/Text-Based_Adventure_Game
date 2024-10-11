@@ -2,21 +2,36 @@
 #ifndef INCLUDE_GAME_H_
 #define INCLUDE_GAME_H_
 
-#include <string>
+#include <unordered_map>
+
+#include "Story.h"
 
 // Game constants
 extern const char* GAME_TITLE;
 
+enum class GameState {
+    MainMenu,
+    InGame,
+    GameOver
+};
+
 class Game {
  public:
-    bool isRunning;
-
     void endGame();
     void initialize();
     bool isGameOver();
-    void displayMenu();
     void processInput();
     void update();
+    void showMainMenu();
+
+ private:
+    int currentSegmentId;
+    GameState gameState;
+    Story story;
+
+    void displayMainMenu();
+    int getValidatedChoice();
+    void processMainMenuInput();
 };
 
 #endif  // INCLUDE_GAME_H_
