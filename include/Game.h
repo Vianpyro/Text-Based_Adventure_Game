@@ -8,6 +8,12 @@
 // Game constants
 extern const char* GAME_TITLE;
 
+enum class GameState {
+    MainMenu,
+    InGame,
+    GameOver
+};
+
 struct StorySegment {
     std::string description;
     std::unordered_map<int, std::string> choices;
@@ -16,20 +22,20 @@ struct StorySegment {
 
 class Game {
  public:
-    bool isRunning;
-
     void endGame();
     void initialize();
     bool isGameOver();
-    void displayMenu();
+    void displayMainMenu();
     void loadStory();
     void printStory();
     void processInput();
+    void processMainMenuInput();
     void update();
 
  private:
-    std::unordered_map<int, StorySegment> storySegments;
     int currentSegmentId;
+    GameState gameState;
+    std::unordered_map<int, StorySegment> storySegments;
 };
 
 #endif  // INCLUDE_GAME_H_

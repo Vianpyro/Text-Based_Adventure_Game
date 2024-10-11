@@ -12,26 +12,22 @@ using json = nlohmann::json;
 const char* GAME_TITLE = "Shattered Kingdom";
 
 void Game::endGame() {
-    // Show goodbye message
     std::cout << "Thanks for playing " << GAME_TITLE << "!" << std::endl;
-
-    // Set game state
-    isRunning = false;
+    gameState = GameState::GameOver;
 }
 
 void Game::initialize() {
-    // Show welcome message
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
-
-    // Set game state
-    isRunning = true;
+    loadStory();
+    gameState = GameState::InGame;
 }
 
 bool Game::isGameOver() {
-    return !isRunning;
+    return gameState == GameState::GameOver;
 }
 
-void Game::displayMenu() {
+void Game::displayMainMenu() {
+    gameState = GameState::MainMenu;
     std::cout << "Main Menu" << std::endl;
     std::cout << "1. Start Game" << std::endl;
     std::cout << "2. Quit" << std::endl;
@@ -102,6 +98,34 @@ void Game::processInput() {
         case 2:
             std::cout << "Quitting game..." << std::endl;
             endGame();
+            break;
+        default:
+            std::cout << "Invalid choice. Please try again." << std::endl;
+    }
+}
+
+void Game::processMainMenuInput() {
+    int choice;
+    std::cout << "Enter your choice: ";
+    std::cin >> choice;
+
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input. Please enter a number." << std::endl;
+        return;
+    }
+
+    switch (choice) {
+        case 1:
+            std::cout << "Starting game..." << std::endl;
+            initialize();
+            gameState = GameState::InGame;
+            break;
+        case 2:
+            std::cout << "Quitting game..." << std::endl;
+            endGame();
+            gameState = GameState::GameOver;
             break;
         default:
             std::cout << "Invalid choice. Please try again." << std::endl;

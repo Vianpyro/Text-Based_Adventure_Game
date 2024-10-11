@@ -9,13 +9,12 @@ int main() {
     Game game;
 
     // Show welcome message
-    game.initialize();
+    game.displayMainMenu();
 
     // Game loop
     while (!game.isGameOver()) {
-        game.update();
-        game.displayMenu();
         game.processInput();
+        game.update();
     }
 
     return 0;
