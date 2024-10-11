@@ -16,6 +16,23 @@ void Game::endGame() {
     gameState = GameState::GameOver;
 }
 
+int getValidatedChoice() {
+    int choice;
+    while (true) {
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number." << std::endl;
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            return choice;
+        }
+    }
+}
+
 void Game::initialize() {
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
     loadStory();
@@ -35,26 +52,57 @@ void Game::displayMainMenu() {
 
 void Game::loadStory() {
     std::ifstream file("assets/quests/plot.json");
-    json storyData;
-    file >> storyData;
 
+    // Check if file opened successfully
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open plot.json file!" << std::endl;
+        return;
+    }
+
+    // Try to parse the JSON data
+    json storyData;
+    try {
+        file >> storyData;
+    } catch (const std::exception& e) {
+        std::cerr << "Error: Failed to parse JSON data - " << e.what() << std::endl;
+        return;
+    }
+
+    // Iterate over story data
     for (auto& [id, segment] : storyData.items()) {
         StorySegment storySegment;
-        storySegment.description = segment["description"];
 
-        for (auto& [choiceId, choiceText] : segment["choices"].items()) {
-            storySegment.choices[std::stoi(choiceId)] = choiceText;
+        // Check if "description" exists
+        if (segment.contains("description")) {
+            storySegment.description = segment["description"];
+        } else {
+            std::cerr << "Warning: Missing 'description' for story segment " << id << std::endl;
+            continue;  // Skip this segment if essential data is missing
         }
 
-        for (auto& [choiceId, nextId] : segment["nextSegmentIds"].items()) {
-            storySegment.nextSegmentIds[std::stoi(choiceId)] = nextId;
+        // Parse choices if they exist
+        if (segment.contains("choices")) {
+            for (auto& [choiceId, choiceText] : segment["choices"].items()) {
+                storySegment.choices[std::stoi(choiceId)] = choiceText;
+            }
+        } else {
+            std::cerr << "Warning: Missing 'choices' for story segment " << id << std::endl;
+        }
+
+        // Parse next segment IDs if they exist
+        if (segment.contains("nextSegmentIds")) {
+            for (auto& [choiceId, nextId] : segment["nextSegmentIds"].items()) {
+                storySegment.nextSegmentIds[std::stoi(choiceId)] = nextId;
+            }
+        } else {
+            std::cerr << "Warning: Missing 'nextSegmentIds' for story segment " << id << std::endl;
         }
 
         storySegments[std::stoi(id)] = storySegment;
     }
 
-    // Tell the user the story has been loaded
-    std::cout << "Story loaded!" << std::endl;
+    // Indicate the story has been loaded successfully
+    std::cout << "Story loaded! Total segments: " << storySegments.size() << std::endl;
 }
 
 void Game::printStory() {
@@ -79,16 +127,7 @@ void Game::printStory() {
 }
 
 void Game::processInput() {
-    int choice;
-    std::cout << "Enter your choice: ";
-    std::cin >> choice;
-
-    if (std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Invalid input. Please enter a number." << std::endl;
-        return;
-    }
+    int choice = getValidatedChoice();
 
     switch (choice) {
         case 1:
@@ -105,16 +144,7 @@ void Game::processInput() {
 }
 
 void Game::processMainMenuInput() {
-    int choice;
-    std::cout << "Enter your choice: ";
-    std::cin >> choice;
-
-    if (std::cin.fail()) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Invalid input. Please enter a number." << std::endl;
-        return;
-    }
+    int choice = getValidatedChoice();
 
     switch (choice) {
         case 1:

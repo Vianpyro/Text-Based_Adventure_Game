@@ -17,5 +17,7 @@ int main() {
         game.update();
     }
 
+    game.endGame();
+
     return 0;
 }

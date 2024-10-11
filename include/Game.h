@@ -36,6 +36,8 @@ class Game {
     int currentSegmentId;
     GameState gameState;
     std::unordered_map<int, StorySegment> storySegments;
+
+    int getValidatedChoice();
 };
 
 #endif  // INCLUDE_GAME_H_
