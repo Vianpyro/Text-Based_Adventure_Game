@@ -27,9 +27,11 @@ Curious about the story of **Shattered Kingdom**? Learn more about the world of 
 
 ## Getting Started
 
-### Prerequisites
+## Requirements
 
-To run this project, you will need a C++ compiler (such as `g++` or `clang`).
+- **Compiler**: g++ with C++17 support
+- **External Libraries**:
+  - `nlohmann::json` (JSON for Modern C++)
 
 ### Build Instructions
 
@@ -45,19 +47,25 @@ To run this project, you will need a C++ compiler (such as `g++` or `clang`).
     cd Text-Based_Adventure_Game
     ```
 
-3. Compile the code:
+3. Include external libraries
+
+    ```bash
+    sudo apt install nlohmann-json3-dev
+    ```
+
+4. Compile the code:
 
     ```bash
     make all
     ```
 
-4. Run the Unit Tests (optional):
+5. Run the Unit Tests (optional):
 
     ```bash
     make distcheck
     ```
 
-5. Run the game:
+6. Run the game:
     ```bash
     ./bin/ShatteredKingdom
     ```
