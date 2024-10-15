@@ -8,6 +8,15 @@
 
 using json = nlohmann::json;
 
+void Story::setCurrentSegment(int segmentId) {
+    if (storySegments.find(segmentId) == storySegments.end()) {
+        std::cerr << "Error: Segment ID " << segmentId
+                  << " does not exist!" << std::endl;
+        return;
+    }
+    currentSegmentId = segmentId;
+}
+
 void Story::loadStory() {
     std::ifstream file("assets/quests/plot.json");
 
@@ -63,13 +72,40 @@ void Story::loadStory() {
         storySegments[std::stoi(id)] = storySegment;
     }
 
+    // Set the current segment to the first segment
+    currentSegmentId = 1;
+
     // Indicate the story has been loaded successfully
     std::cout << "Story loaded! Total segments: "
               << storySegments.size() << std::endl;
 }
 
+void Story::printSegment() {
+    const auto& segment = storySegments[currentSegmentId];
+
+    std::cout << "Segment ID: " << currentSegmentId << std::endl;
+    std::cout << "Description: " << segment.description << std::endl;
+
+    std::cout << "Choices:" << std::endl;
+    for (const auto& [choiceId, choiceText] : segment.choices) {
+        std::cout << "  Choice ID: " << choiceId
+                  << " - " << choiceText << std::endl;
+    }
+
+    std::cout << "Next Segment IDs:" << std::endl;
+    for (const auto& [choiceId, nextId] : segment.nextSegmentIds) {
+        std::cout << "  Choice ID: " << choiceId
+                  << " -> Next Segment ID: " << nextId << std::endl;
+    }
+
+    std::cout << "------------------------" << std::endl;
+}
+
 void Story::printStory() {
     for (const auto& [id, segment] : storySegments) {
+        if (id == currentSegmentId) {
+            std::cout << ">>> CURRENT SEGMENT <<<" << std::endl;
+        }
         std::cout << "Segment ID: " << id << std::endl;
         std::cout << "Description: " << segment.description << std::endl;
 
@@ -87,4 +123,8 @@ void Story::printStory() {
 
         std::cout << "------------------------" << std::endl;
     }
+}
+
+int Story::getCurrentSegment() const {
+    return currentSegmentId;
 }

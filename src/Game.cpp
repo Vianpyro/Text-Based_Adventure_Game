@@ -32,6 +32,8 @@ void Game::processInput() {
     int choice = getValidatedChoice();
 
     std::cout << "You chose: " << choice << std::endl;
+
+    story.setCurrentSegment(choice);
 }
 
 void Game::processMainMenuInput() {
@@ -54,7 +56,7 @@ void Game::processMainMenuInput() {
 }
 
 void Game::update() {
-    story.printStory();
+    story.printSegment();
 }
 
 void Game::showMainMenu() {

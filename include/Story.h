@@ -13,11 +13,15 @@ struct StorySegment {
 
 class Story {
  public:
+    int getCurrentSegment() const;
     void loadStory();
+    void printSegment();
     void printStory();
+    void setCurrentSegment(int segmentId);
 
  private:
     std::unordered_map<int, StorySegment> storySegments;
+    int currentSegmentId;  // New member variable to store the current segment ID
 };
 
 #endif  // INCLUDE_STORY_H_
