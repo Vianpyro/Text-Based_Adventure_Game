@@ -9,15 +9,19 @@ int main() {
     Game game;
 
     // Show the main menu message
-    game.showMainMenu();
+    game.initialize();
 
     // Game loop
-    while (!game.isGameOver()) {
-        game.processInput();
+    while (true) {
         game.update();
-    }
 
-    game.endGame();
+        if (game.isGameOver()) {
+            game.endGame();
+            break;
+        }
+
+        game.processInput();
+    }
 
     return 0;
 }
