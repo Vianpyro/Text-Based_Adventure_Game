@@ -31,13 +31,12 @@ void Game::displayMainMenu() {
 void Game::processInput() {
     int choice = getValidatedChoice();
 
-    std::cout << "You chose: " << choice << std::endl;
-
-    if (story.isChoiceValid(choice)) {
-        story.setCurrentSegment(choice);
-    } else {
-        std::cout << "Invalid choice. Please try again." << std::endl;
+    if (choice == 0) {
+        gameState = GameState::MainMenu;
+        return;
     }
+
+    story.nextSegment(choice);
 }
 
 void Game::processMainMenuInput() {
@@ -60,7 +59,16 @@ void Game::processMainMenuInput() {
 }
 
 void Game::update() {
-    story.printSegment();
+    switch (gameState) {
+        case GameState::MainMenu:
+            showMainMenu();
+            break;
+        case GameState::InGame:
+            story.printSegment();
+            break;
+        case GameState::GameOver:
+            break;
+    }
 }
 
 void Game::showMainMenu() {
