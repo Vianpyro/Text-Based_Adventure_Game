@@ -52,8 +52,10 @@ void Story::loadStory() {
 
         // Parse nextSegmentIds if they exist
         if (segment.contains("nextSegmentIds")) {
-            for (auto& [choiceId, nextSegmentId] : segment["nextSegmentIds"].items()) {
-                storySegment.nextSegmentIds[std::stoi(choiceId)] = nextSegmentId;
+            for (auto& [choiceId, nextSegmentId] :
+                 segment["nextSegmentIds"].items()) {
+                storySegment.nextSegmentIds[std::stoi(choiceId)] =
+                    nextSegmentId;
             }
         } else {
             std::cerr << "Warning: Missing 'nextSegmentIds' for story segment "
@@ -80,10 +82,12 @@ void Story::nextSegment(int choice) {
         return;
     }
 
-    if (currentSegment.nextSegmentIds.find(choice) != currentSegment.nextSegmentIds.end()) {
+    if (currentSegment.nextSegmentIds.find(choice) !=
+        currentSegment.nextSegmentIds.end()) {
         currentSegmentId = currentSegment.nextSegmentIds.at(choice);
     } else {
-        std::cerr << "Error: Invalid next segment for choice ID " << choice << std::endl;
+        std::cerr << "Error: Invalid next segment for choice ID "
+                  << choice << std::endl;
     }
 }
 
@@ -95,7 +99,8 @@ void Story::printSegment() {
 
     std::cout << "Choices:" << std::endl;
 
-    std::vector<std::pair<int, std::string>> sortedChoices(segment.choices.begin(), segment.choices.end());
+    std::vector<std::pair<int, std::string>> sortedChoices(
+        segment.choices.begin(), segment.choices.end());
     std::sort(sortedChoices.begin(), sortedChoices.end());
 
     for (const auto& [choiceId, choiceText] : sortedChoices) {
