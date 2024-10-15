@@ -14,6 +14,7 @@ struct StorySegment {
 class Story {
  public:
     int getCurrentSegment() const;
+    bool isChoiceValid(int choice);
     void loadStory();
     void printSegment();
     void printStory();

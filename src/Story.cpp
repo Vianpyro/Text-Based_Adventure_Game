@@ -17,6 +17,11 @@ void Story::setCurrentSegment(int segmentId) {
     currentSegmentId = segmentId;
 }
 
+bool Story::isChoiceValid(int choice) {
+    const auto& segment = storySegments[currentSegmentId];
+    return segment.choices.find(choice) != segment.choices.end();
+}
+
 void Story::loadStory() {
     std::ifstream file("assets/quests/plot.json");
 

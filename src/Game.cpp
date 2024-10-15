@@ -33,7 +33,11 @@ void Game::processInput() {
 
     std::cout << "You chose: " << choice << std::endl;
 
-    story.setCurrentSegment(choice);
+    if (story.isChoiceValid(choice)) {
+        story.setCurrentSegment(choice);
+    } else {
+        std::cout << "Invalid choice. Please try again." << std::endl;
+    }
 }
 
 void Game::processMainMenuInput() {
