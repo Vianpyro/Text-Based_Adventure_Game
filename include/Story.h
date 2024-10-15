@@ -16,8 +16,8 @@ class Story {
     int getCurrentSegment() const;
     bool isChoiceValid(int choice);
     void loadStory();
+    void nextSegment(int choice);
     void printSegment();
-    void setCurrentSegment(int segmentId);
 
  private:
     std::unordered_map<int, StorySegment> storySegments;

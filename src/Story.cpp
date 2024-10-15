@@ -8,20 +8,6 @@
 
 using json = nlohmann::json;
 
-void Story::setCurrentSegment(int segmentId) {
-    if (storySegments.find(segmentId) == storySegments.end()) {
-        std::cerr << "Error: Segment ID " << segmentId
-                  << " does not exist!" << std::endl;
-        return;
-    }
-    currentSegmentId = segmentId;
-}
-
-bool Story::isChoiceValid(int choice) {
-    const auto& segment = storySegments[currentSegmentId];
-    return segment.choices.find(choice) != segment.choices.end();
-}
-
 void Story::loadStory() {
     std::ifstream file("assets/quests/plot.json");
 
@@ -56,19 +42,25 @@ void Story::loadStory() {
 
         // Parse choices if they exist
         if (segment.contains("choices")) {
-            std::vector<std::pair<int, std::string>> tempChoices;
             for (auto& [choiceId, choiceText] : segment["choices"].items()) {
-                tempChoices.emplace_back(std::stoi(choiceId), choiceText);
-            }
-            std::reverse(tempChoices.begin(), tempChoices.end());
-            for (const auto& [choiceId, choiceText] : tempChoices) {
-                storySegment.choices[choiceId] = choiceText;
+                storySegment.choices[std::stoi(choiceId)] = choiceText;
             }
         } else {
             std::cerr << "Warning: Missing 'choices' for story segment "
                       << id << std::endl;
         }
 
+        // Parse nextSegmentIds if they exist
+        if (segment.contains("nextSegmentIds")) {
+            for (auto& [choiceId, nextSegmentId] : segment["nextSegmentIds"].items()) {
+                storySegment.nextSegmentIds[std::stoi(choiceId)] = nextSegmentId;
+            }
+        } else {
+            std::cerr << "Warning: Missing 'nextSegmentIds' for story segment "
+                      << id << std::endl;
+        }
+
+        // Add the fully populated story segment to the map
         storySegments[std::stoi(id)] = storySegment;
     }
 
@@ -80,22 +72,32 @@ void Story::loadStory() {
               << storySegments.size() << std::endl;
 }
 
+void Story::nextSegment(int choice) {
+    const auto& currentSegment = storySegments[currentSegmentId];
+
+    if (currentSegment.choices.find(choice) == currentSegment.choices.end()) {
+        std::cerr << "Error: Invalid choice ID " << choice << std::endl;
+        return;
+    }
+
+    if (currentSegment.nextSegmentIds.find(choice) != currentSegment.nextSegmentIds.end()) {
+        currentSegmentId = currentSegment.nextSegmentIds.at(choice);
+    } else {
+        std::cerr << "Error: Invalid next segment for choice ID " << choice << std::endl;
+    }
+}
+
 void Story::printSegment() {
     const auto& segment = storySegments[currentSegmentId];
 
-    std::cout << "Segment ID: " << currentSegmentId << std::endl;
+    std::cout << "------------------------" << std::endl;
+
     std::cout << "Description: " << segment.description << std::endl;
 
     std::cout << "Choices:" << std::endl;
     for (const auto& [choiceId, choiceText] : segment.choices) {
         std::cout << "  Choice ID: " << choiceId
                   << " - " << choiceText << std::endl;
-    }
-
-    std::cout << "Next Segment IDs:" << std::endl;
-    for (const auto& [choiceId, nextId] : segment.nextSegmentIds) {
-        std::cout << "  Choice ID: " << choiceId
-                  << " -> Next Segment ID: " << nextId << std::endl;
     }
 
     std::cout << "------------------------" << std::endl;
