@@ -9,13 +9,14 @@ int main() {
     Game game;
 
     // Show the main menu message
-    game.showMainMenu();
+    game.initialize();
 
     // Game loop
     while (true) {
         game.update();
 
         if (game.isGameOver()) {
+            game.endGame();
             break;
         }
 

@@ -91,11 +91,14 @@ void Story::printSegment() {
     const auto& segment = storySegments[currentSegmentId];
 
     std::cout << "------------------------" << std::endl;
-
     std::cout << "Description: " << segment.description << std::endl;
 
     std::cout << "Choices:" << std::endl;
-    for (const auto& [choiceId, choiceText] : segment.choices) {
+
+    std::vector<std::pair<int, std::string>> sortedChoices(segment.choices.begin(), segment.choices.end());
+    std::sort(sortedChoices.begin(), sortedChoices.end());
+
+    for (const auto& [choiceId, choiceText] : sortedChoices) {
         std::cout << "  Choice ID: " << choiceId
                   << " - " << choiceText << std::endl;
     }

@@ -14,7 +14,7 @@ void Game::endGame() {
 void Game::initialize() {
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
     story.loadStory();
-    gameState = GameState::InGame;
+    gameState = GameState::MainMenu;
 }
 
 bool Game::isGameOver() {
@@ -22,7 +22,6 @@ bool Game::isGameOver() {
 }
 
 void Game::displayMainMenu() {
-    gameState = GameState::MainMenu;
     std::cout << "Main Menu" << std::endl;
     std::cout << "1. Start Game" << std::endl;
     std::cout << "2. Quit" << std::endl;
@@ -45,12 +44,11 @@ void Game::processMainMenuInput() {
     switch (choice) {
         case 1:
             std::cout << "Starting game..." << std::endl;
-            initialize();
             gameState = GameState::InGame;
+            story.printSegment();
             break;
         case 2:
             std::cout << "Quitting game..." << std::endl;
-            endGame();
             gameState = GameState::GameOver;
             break;
         default:
