@@ -56,21 +56,16 @@ void Story::loadStory() {
 
         // Parse choices if they exist
         if (segment.contains("choices")) {
+            std::vector<std::pair<int, std::string>> tempChoices;
             for (auto& [choiceId, choiceText] : segment["choices"].items()) {
-                storySegment.choices[std::stoi(choiceId)] = choiceText;
+                tempChoices.emplace_back(std::stoi(choiceId), choiceText);
+            }
+            std::reverse(tempChoices.begin(), tempChoices.end());
+            for (const auto& [choiceId, choiceText] : tempChoices) {
+                storySegment.choices[choiceId] = choiceText;
             }
         } else {
             std::cerr << "Warning: Missing 'choices' for story segment "
-                      << id << std::endl;
-        }
-
-        // Parse next segment IDs if they exist
-        if (segment.contains("nextSegmentIds")) {
-            for (auto& [choiceId, nextId] : segment["nextSegmentIds"].items()) {
-                storySegment.nextSegmentIds[std::stoi(choiceId)] = nextId;
-            }
-        } else {
-            std::cerr << "Warning: Missing 'nextSegmentIds' for story segment "
                       << id << std::endl;
         }
 
