@@ -110,7 +110,3 @@ void Story::printSegment() {
 
     std::cout << "------------------------" << std::endl;
 }
-
-int Story::getCurrentSegment() const {
-    return currentSegmentId;
-}

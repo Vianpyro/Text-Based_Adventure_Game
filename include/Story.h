@@ -14,7 +14,6 @@ struct StorySegment {
 
 class Story {
  public:
-    int getCurrentSegment() const;
     void loadStory();
     void nextSegment(int choice);
     void printSegment();
