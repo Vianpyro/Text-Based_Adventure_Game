@@ -17,7 +17,6 @@ class Story {
     bool isChoiceValid(int choice);
     void loadStory();
     void printSegment();
-    void printStory();
     void setCurrentSegment(int segmentId);
 
  private:
