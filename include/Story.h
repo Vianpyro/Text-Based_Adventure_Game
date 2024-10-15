@@ -21,7 +21,7 @@ class Story {
 
  private:
     std::unordered_map<int, StorySegment> storySegments;
-    int currentSegmentId;  // New member variable to store the current segment ID
+    int currentSegmentId;
 };
 
 #endif  // INCLUDE_STORY_H_
