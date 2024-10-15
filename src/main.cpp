@@ -12,12 +12,15 @@ int main() {
     game.showMainMenu();
 
     // Game loop
-    while (!game.isGameOver()) {
-        game.processInput();
+    while (true) {
         game.update();
-    }
 
-    game.endGame();
+        if (game.isGameOver()) {
+            break;
+        }
+
+        game.processInput();
+    }
 
     return 0;
 }
