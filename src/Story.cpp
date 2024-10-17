@@ -9,7 +9,7 @@
 using json = nlohmann::json;
 
 void Story::loadStory() {
-    std::ifstream file("assets/quests/plot.json");
+    std::ifstream file("assets/quests/0-plentiful_valley.json");
 
     // Check if file opened successfully
     if (!file.is_open()) {
