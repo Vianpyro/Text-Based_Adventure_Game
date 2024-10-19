@@ -13,7 +13,7 @@ void Game::endGame() {
 
 void Game::initialize() {
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
-    story.loadStory();
+    story.loadStory("0-plentiful_valley");
     gameState = GameState::MainMenu;
 }
 

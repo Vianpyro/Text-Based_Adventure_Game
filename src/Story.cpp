@@ -3,17 +3,19 @@
 
 #include <fstream>
 #include <iostream>
+#include <string>
 
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 
-void Story::loadStory() {
-    std::ifstream file("assets/quests/0-plentiful_valley.json");
+void Story::loadStory(const std::string& saveFile) {
+    std::string filePath = "assets/quests/" + saveFile + ".json";
+    std::ifstream file(filePath);
 
     // Check if file opened successfully
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open plot.json file!" << std::endl;
+        std::cerr << "Error: Could not open " << saveFile << "!" << std::endl;
         return;
     }
 

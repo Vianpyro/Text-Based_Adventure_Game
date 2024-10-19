@@ -14,7 +14,7 @@ struct StorySegment {
 
 class Story {
  public:
-    void loadStory();
+    void Story::loadStory(const std::string& saveFile);
     void nextSegment(int choice);
     void printSegment();
 
