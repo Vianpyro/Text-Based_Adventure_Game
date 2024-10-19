@@ -2,7 +2,12 @@
 name: Makefile CI
 
 on:
-  push: null
+  push:
+    paths:
+      - 'Makefile'
+      - '**/*.c'
+      - '**/*.cpp'
+      - '**/*.h'
 
 permissions:
   contents: read # This is sufficient for read access.
