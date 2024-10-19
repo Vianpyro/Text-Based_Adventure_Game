@@ -71,6 +71,12 @@ void Story::loadStory(const std::string& saveFile) {
     // Set the current segment to the first segment
     currentSegmentId = 1;
 
+    // Save the next story name if it exists
+    if (storyData.contains("next_chapter") &&
+        !storyData["next_chapter"].is_null()) {
+        nextStoryName = storyData["next_chapter"];
+    }
+
     // Indicate the story has been loaded successfully
     std::cout << "Story loaded! Total segments: "
               << storySegments.size() << std::endl;

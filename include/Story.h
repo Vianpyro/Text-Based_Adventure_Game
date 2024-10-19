@@ -19,8 +19,9 @@ class Story {
     void printSegment();
 
  private:
-    std::unordered_map<int, StorySegment> storySegments;
     int currentSegmentId;
+    std::string nextStoryName;
+    std::unordered_map<int, StorySegment> storySegments;
 };
 
 #endif  // INCLUDE_STORY_H_
