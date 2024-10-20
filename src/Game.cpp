@@ -31,7 +31,6 @@ void Game::loadNextStory() {
 
     story.unloadStory();
     story.loadStory(nextStory);
-    std::cout << "Loading next story..." << std::endl;
 }
 
 void Game::displayMainMenu() {
