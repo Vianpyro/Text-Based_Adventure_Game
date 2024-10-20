@@ -31,6 +31,7 @@ class Game {
     Story story;
 
     void displayMainMenu();
+    void loadNextStory();
     void processMainMenuInput();
 };
 

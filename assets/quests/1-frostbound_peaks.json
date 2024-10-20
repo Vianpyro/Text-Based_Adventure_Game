@@ -2,5 +2,16 @@
     "title": "Frostbound Peaks",
     "name": "1-frostbound_peaks",
     "next_chapter": "2-sunken_ruins",
-    "introduction": null
+    "introduction": "You've reached the frostbound peaks introduction.",
+    "1": {
+        "description": "You've reached the frostbound peaks.",
+        "choices": {
+            "1": "Be a happy developer.",
+            "2": "Be a happy developer."
+        },
+        "nextSegmentIds": {
+            "1": 1,
+            "2": 1
+        }
+    }
 }

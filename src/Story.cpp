@@ -3,17 +3,23 @@
 
 #include <fstream>
 #include <iostream>
+#include <string>
 
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 
-void Story::loadStory() {
-    std::ifstream file("assets/quests/0-plentiful_valley.json");
+std::string Story::getNextStoryName() {
+    return nextStoryName;
+}
+
+void Story::loadStory(const std::string& saveFile) {
+    std::string filePath = "assets/quests/" + saveFile + ".json";
+    std::ifstream file(filePath);
 
     // Check if file opened successfully
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open plot.json file!" << std::endl;
+        std::cerr << "Error: Could not open " << saveFile << "!" << std::endl;
         return;
     }
 
@@ -29,15 +35,17 @@ void Story::loadStory() {
 
     // Iterate over story data
     for (auto& [id, segment] : storyData.items()) {
-        StorySegment storySegment;
-
         // Check if "description" exists
-        if (segment.contains("description")) {
-            storySegment.description = segment["description"];
-        } else {
-            std::cerr << "Warning: Missing 'description' for story segment "
-                      << id << std::endl;
+        if (!segment.contains("description")) {
             continue;  // Skip this segment if essential data is missing
+        }
+
+        StorySegment storySegment;
+        storySegment.description = segment["description"];
+
+        // Parse chapter_end if it exists
+        if (segment.contains("chapter_end")) {
+            storySegment.chapterEnd = true;
         }
 
         // Parse choices if they exist
@@ -69,13 +77,24 @@ void Story::loadStory() {
     // Set the current segment to the first segment
     currentSegmentId = 1;
 
+    // Save the next story name if it exists
+    if (storyData.contains("next_chapter") &&
+        !storyData["next_chapter"].is_null()) {
+        nextStoryName = storyData["next_chapter"];
+    }
+
     // Indicate the story has been loaded successfully
-    std::cout << "Story loaded! Total segments: "
-              << storySegments.size() << std::endl;
+    std::cout << storyData["introduction"] << std::endl;
 }
 
 void Story::nextSegment(int choice) {
     const auto& currentSegment = storySegments[currentSegmentId];
+
+    if (currentSegment.chapterEnd) {
+        std::cerr << "Error: Cannot move to next segment, story is over!"
+                  << std::endl;
+        return;
+    }
 
     if (currentSegment.choices.find(choice) == currentSegment.choices.end()) {
         std::cerr << "Error: Invalid choice ID " << choice << std::endl;
@@ -91,13 +110,19 @@ void Story::nextSegment(int choice) {
     }
 }
 
-void Story::printSegment() {
+bool Story::printSegment() {
+    // If the key `"chapter_end": true` is met, the story is over, return false
     const auto& segment = storySegments[currentSegmentId];
 
-    std::cout << "------------------------" << std::endl;
-    std::cout << "Description: " << segment.description << std::endl;
+    if (segment.chapterEnd) {
+        return false;
+    }
 
-    std::cout << "Choices:" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    std::cout << segment.description << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Choose an option:" << std::endl;
 
     std::vector<std::pair<int, std::string>> sortedChoices(
         segment.choices.begin(), segment.choices.end());
@@ -109,4 +134,12 @@ void Story::printSegment() {
     }
 
     std::cout << "------------------------" << std::endl;
+
+    return true;
+}
+
+void Story::unloadStory() {
+    storySegments.clear();
+    currentSegmentId = 0;
+    nextStoryName.clear();
 }
