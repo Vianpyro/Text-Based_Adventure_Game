@@ -10,13 +10,16 @@ struct StorySegment {
     std::string description;
     std::map<int, std::string> choices;
     std::map<int, int> nextSegmentIds;
+    bool chapterEnd = false;
 };
 
 class Story {
  public:
-    void Story::loadStory(const std::string& saveFile);
+    std::string getNextStoryName();
+    void loadStory(const std::string& saveFile);
     void nextSegment(int choice);
-    void printSegment();
+    bool printSegment();
+    void unloadStory();
 
  private:
     int currentSegmentId;

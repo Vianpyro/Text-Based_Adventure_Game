@@ -21,6 +21,19 @@ bool Game::isGameOver() {
     return gameState == GameState::GameOver;
 }
 
+void Game::loadNextStory() {
+    std::string nextStory = story.getNextStoryName();
+
+    if (nextStory.empty()) {
+        endGame();
+        return;
+    }
+
+    story.unloadStory();
+    story.loadStory(nextStory);
+    std::cout << "Loading next story..." << std::endl;
+}
+
 void Game::displayMainMenu() {
     std::cout << "Main Menu" << std::endl;
     std::cout << "1. Start Game" << std::endl;
@@ -62,7 +75,9 @@ void Game::update() {
             showMainMenu();
             break;
         case GameState::InGame:
-            story.printSegment();
+            if (!story.printSegment()) {
+                loadNextStory();
+            }
             break;
         case GameState::GameOver:
             break;
