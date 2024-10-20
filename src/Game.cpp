@@ -6,6 +6,12 @@
 
 const char* GAME_TITLE = "Shattered Kingdom";
 
+void Game::displayMainMenu() {
+    std::cout << "Main Menu" << std::endl;
+    std::cout << "1. Start Game" << std::endl;
+    std::cout << "2. Quit" << std::endl;
+}
+
 void Game::endGame() {
     std::cout << "Thanks for playing " << GAME_TITLE << "!" << std::endl;
     gameState = GameState::GameOver;
@@ -31,12 +37,7 @@ void Game::loadNextStory() {
 
     story.unloadStory();
     story.loadStory(nextStory);
-}
-
-void Game::displayMainMenu() {
-    std::cout << "Main Menu" << std::endl;
-    std::cout << "1. Start Game" << std::endl;
-    std::cout << "2. Quit" << std::endl;
+    story.printSegment();
 }
 
 void Game::processInput() {
