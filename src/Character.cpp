@@ -30,7 +30,8 @@ int Character::getAgility() const { return agility; }
 void Character::takeDamage(int damage) {
     health -= damage;
     if (health < 0) health = 0;
-    std::cout << name << " takes " << damage << " damage! Current health: " << health << "/" << maxHealth << std::endl;
+    std::cout << name << " takes " << damage << " damage!";
+    std::cout << "Current health: " << health << "/" << maxHealth << std::endl;
 }
 
 // Level up the character

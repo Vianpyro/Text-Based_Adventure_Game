@@ -16,7 +16,13 @@ class Character {
 
  public:
     // Constructor
-    Character(const std::string& name, int health, int mana, int strength, int intelligence, int agility);
+    Character(
+        const std::string& name,
+        int health,
+        int mana,
+        int strength,
+        int intelligence,
+        int agility);
 
     // Destructor
     virtual ~Character() = default;
