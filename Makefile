@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -I$(INC_DIR) -MMD -MP
+CXXFLAGS = -std=c++2b -Wall -Wextra -I$(INC_DIR) -MMD -MP
 LDFLAGS =
 INC_DIR = include
 SRC_DIR = src
