@@ -10,10 +10,10 @@ class Character {
     std::string name;
     int health;
     int maxHealth;
-    int level;
     int strength;
     int intelligence;
     int agility;
+    int level;
 
  public:
     // Constructor
@@ -36,7 +36,7 @@ class Character {
     int getAgility() const;
 
     // Virtual methods for actions (to be overridden by subclasses)
-    virtual void attack(Character& target) = 0;
+    virtual void attack(Character* target) = 0;
     virtual void defend() = 0;
     virtual void takeDamage(int damage);
 

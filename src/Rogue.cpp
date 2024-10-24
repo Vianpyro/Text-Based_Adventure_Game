@@ -6,11 +6,11 @@
 Rogue::Rogue(const std::string& name)
     : Character(name, 20, 10, 10, 10) {}
 
-void Rogue::attack(Character& target) {
+void Rogue::attack(Character* target) {
     int damage = strength;
-    std::cout << name << " stabs " << target.getName()
+    std::cout << name << " stabs " << target->getName()
               << " for " << damage << " damage!" << std::endl;
-    target.takeDamage(damage);
+    target->takeDamage(damage);
 }
 
 void Rogue::defend() {

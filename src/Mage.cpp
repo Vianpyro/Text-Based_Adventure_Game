@@ -6,11 +6,11 @@
 Mage::Mage(const std::string& name)
     : Character(name, 15, 5, 15, 10) {}
 
-void Mage::attack(Character& target) {
+void Mage::attack(Character* target) {
     int damage = intelligence;
-    std::cout << name << " casts a spell on " << target.getName()
+    std::cout << name << " casts a spell on " << target->getName()
               << " for " << damage << " damage!" << std::endl;
-    target.takeDamage(damage);
+    target->takeDamage(damage);
 }
 
 void Mage::defend() {

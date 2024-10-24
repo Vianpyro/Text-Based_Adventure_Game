@@ -11,7 +11,7 @@ class Warrior : public Character {
     Warrior(const std::string& name);
 
     // Overridden attack method
-    void attack(Character& target) override;
+    void attack(Character* target) override;
 
     // Overridden defend method
     void defend() override;

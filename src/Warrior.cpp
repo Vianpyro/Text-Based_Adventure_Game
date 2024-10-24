@@ -6,11 +6,11 @@
 Warrior::Warrior(const std::string& name)
     : Character(name, 25, 15, 5, 10) {}
 
-void Warrior::attack(Character& target) {
+void Warrior::attack(Character* target) {
     int damage = strength;
-    std::cout << name << " slashes " << target.getName()
+    std::cout << name << " slashes " << target->getName()
               << " for " << damage << " damage!" << std::endl;
-    target.takeDamage(damage);
+    target->takeDamage(damage);
 }
 
 void Warrior::defend() {
