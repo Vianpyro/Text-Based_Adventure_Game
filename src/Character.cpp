@@ -1,4 +1,5 @@
-#include "Character.h"
+// Copyright 2024 Vianney Veremme
+#include "../include/Character.h"
 
 #include <iostream>
 
@@ -6,7 +7,6 @@
 Character::Character(
     const std::string& name,
     int health,
-    int mana,
     int strength,
     int intelligence,
     int agility)

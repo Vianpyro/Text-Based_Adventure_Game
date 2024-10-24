@@ -1,3 +1,4 @@
+// Copyright 2024 Vianney Veremme
 #ifndef INCLUDE_CHARACTER_H_
 #define INCLUDE_CHARACTER_H_
 
@@ -19,7 +20,6 @@ class Character {
     Character(
         const std::string& name,
         int health,
-        int mana,
         int strength,
         int intelligence,
         int agility);
