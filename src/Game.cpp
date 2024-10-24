@@ -6,6 +6,12 @@
 
 const char* GAME_TITLE = "Shattered Kingdom";
 
+void Game::displayMainMenu() {
+    std::cout << "Main Menu" << std::endl;
+    std::cout << "1. Start Game" << std::endl;
+    std::cout << "2. Quit" << std::endl;
+}
+
 void Game::endGame() {
     std::cout << "Thanks for playing " << GAME_TITLE << "!" << std::endl;
     gameState = GameState::GameOver;
@@ -13,7 +19,7 @@ void Game::endGame() {
 
 void Game::initialize() {
     std::cout << "Welcome to " << GAME_TITLE << "!" << std::endl;
-    story.loadStory();
+    story.loadStory("0-plentiful_valley");
     gameState = GameState::MainMenu;
 }
 
@@ -21,10 +27,17 @@ bool Game::isGameOver() {
     return gameState == GameState::GameOver;
 }
 
-void Game::displayMainMenu() {
-    std::cout << "Main Menu" << std::endl;
-    std::cout << "1. Start Game" << std::endl;
-    std::cout << "2. Quit" << std::endl;
+void Game::loadNextStory() {
+    std::string nextStory = story.getNextStoryName();
+
+    if (nextStory.empty()) {
+        endGame();
+        return;
+    }
+
+    story.unloadStory();
+    story.loadStory(nextStory);
+    story.printSegment();
 }
 
 void Game::processInput() {
@@ -62,7 +75,9 @@ void Game::update() {
             showMainMenu();
             break;
         case GameState::InGame:
-            story.printSegment();
+            if (!story.printSegment()) {
+                loadNextStory();
+            }
             break;
         case GameState::GameOver:
             break;

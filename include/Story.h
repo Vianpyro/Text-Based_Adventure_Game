@@ -10,17 +10,21 @@ struct StorySegment {
     std::string description;
     std::map<int, std::string> choices;
     std::map<int, int> nextSegmentIds;
+    bool chapterEnd = false;
 };
 
 class Story {
  public:
-    void loadStory();
+    std::string getNextStoryName();
+    void loadStory(const std::string& saveFile);
     void nextSegment(int choice);
-    void printSegment();
+    bool printSegment();
+    void unloadStory();
 
  private:
-    std::unordered_map<int, StorySegment> storySegments;
     int currentSegmentId;
+    std::string nextStoryName;
+    std::unordered_map<int, StorySegment> storySegments;
 };
 
 #endif  // INCLUDE_STORY_H_
