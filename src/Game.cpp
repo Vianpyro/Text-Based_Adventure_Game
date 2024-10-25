@@ -9,7 +9,9 @@ const char* GAME_TITLE = "Shattered Kingdom";
 void Game::displayMainMenu() {
     std::cout << "Main Menu" << std::endl;
     std::cout << "1. Start Game" << std::endl;
-    std::cout << "2. Quit" << std::endl;
+    std::cout << "2. New Character" << std::endl;
+    std::cout << "3. Load Character" << std::endl;
+    std::cout << "0. Quit" << std::endl;
 }
 
 void Game::endGame() {
@@ -55,14 +57,20 @@ void Game::processMainMenuInput() {
     int choice = getValidatedChoice();
 
     switch (choice) {
+        case 0:
+            std::cout << "Quitting game..." << std::endl;
+            gameState = GameState::GameOver;
+            break;
         case 1:
             std::cout << "Starting game..." << std::endl;
             gameState = GameState::InGame;
             story.printSegment();
             break;
         case 2:
-            std::cout << "Quitting game..." << std::endl;
-            gameState = GameState::GameOver;
+            std::cout << "Creating new character..." << std::endl;
+            break;
+        case 3:
+            std::cout << "Loading character..." << std::endl;
             break;
         default:
             std::cout << "Invalid choice. Please try again." << std::endl;
