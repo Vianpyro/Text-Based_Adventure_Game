@@ -2,6 +2,8 @@
 #ifndef INCLUDE_WARRIOR_H_
 #define INCLUDE_WARRIOR_H_
 
+#include <string>
+
 #include "Character.h"
 
 // Warrior class, derived from Character

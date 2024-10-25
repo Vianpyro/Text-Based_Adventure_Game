@@ -2,6 +2,8 @@
 #ifndef INCLUDE_MAGE_H_
 #define INCLUDE_MAGE_H_
 
+#include <string>
+
 #include "Character.h"
 
 // Mage class, derived from Character

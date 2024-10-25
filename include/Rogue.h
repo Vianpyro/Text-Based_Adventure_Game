@@ -2,6 +2,8 @@
 #ifndef INCLUDE_ROGUE_H_
 #define INCLUDE_ROGUE_H_
 
+#include <string>
+
 #include "Character.h"
 
 // Rogue class, derived from Character
