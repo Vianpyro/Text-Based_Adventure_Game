@@ -10,7 +10,7 @@
 class Warrior : public Character {
  public:
     // Constructor
-    Warrior(const std::string& name);
+    explicit Warrior(const std::string& name);
 
     // Overridden attack method
     void attack(Character* target) override;

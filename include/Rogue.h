@@ -10,7 +10,7 @@
 class Rogue : public Character {
  public:
     // Constructor
-    Rogue(const std::string& name);
+    explicit Rogue(const std::string& name);
 
     // Overridden attack method
     void attack(Character* target) override;

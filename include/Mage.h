@@ -10,7 +10,7 @@
 class Mage : public Character {
  public:
     // Constructor
-    Mage(const std::string& name);
+    explicit Mage(const std::string& name);
 
     // Overridden attack method
     void attack(Character* target) override;
