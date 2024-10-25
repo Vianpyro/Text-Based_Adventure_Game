@@ -2,12 +2,13 @@
     "title": "Plentiful Valley",
     "name": "0-plentiful_valley",
     "next_chapter": "1-frostbound_peaks",
-    "introduction": "Plentiful Valley lies before you, its lush green meadows bathed in the golden light of dawn. The river that runs through the valley sparkles in the distance, and the air is thick with the scent of wildflowers. It's a tranquil place, a reminder of the peace Elyndor once knew.\nBut beneath the surface, you sense that all is not well. Whispers of trouble from the surrounding lands have reached even this remote part of the kingdom. The villagers here seem on edge, wary of the shadow that slowly creeps over the valley.\nAs a humble adventurer, you have a choice to make: continue your quiet life or heed the call for heroes to reclaim the Shattered Crown and restore Elyndor to its former glory.",
+    "introduction": "Plentiful Valley, once part of a vibrant kingdom, now bears the subtle scars of Elyndor's fall. Its fields and meadows flourish under a tranquil sunrise, but every path holds whispers of the kingdom's shattered past. The Shattered Crown pieces remain hidden across these dangerous lands, and you know you must seek them out.\n\nYet even here, in the valley's peace, you feel the pull of fate and the darkness creeping from distant borders. Though a humble adventurer, you can choose to continue your quiet life or heed the call to unite Elyndor once more.",
     "1": {
-        "description": "Your journey begins now.",
+        "description": "Your journey begins with a choice: do you seek the comfort of familiarity, or venture into the unknown?",
+        "encounter_type": "story",
         "choices": {
-            "1": "Continue your quiet life.",
-            "2": "Heed the call for heroes."
+            "1": "Continue your quiet life in the valley.",
+            "2": "Heed the call to find the Shattered Crown shards."
         },
         "nextSegmentIds": {
             "1": 2,
@@ -16,6 +17,7 @@
     },
     "2": {
         "description": "Why would you install this game in the first place if you're not going to play it?",
+        "encounter_type": "story",
         "choices": {
             "1": "Yes.",
             "2": "I'm sorry, I'll play the game."
@@ -27,6 +29,7 @@
     },
     "3": {
         "description": "You decide to heed the call for heroes. As you prepare to leave Plentiful Valley, you meet an old villager who tells you of a hidden path leading to the Frostbound Peaks, where one of the shards of the Shattered Crown is rumored to be guarded by a powerful ice dragon.",
+        "encounter_type": "dialogue",
         "choices": {
             "1": "Ask about the hidden path.",
             "2": "Leave immediately and head toward the Frostbound Peaks."
@@ -38,6 +41,7 @@
     },
     "4": {
         "description": "The old villager explains that the hidden path is treacherous, filled with dangerous creatures and harsh weather. Only those with great courage should attempt to find it.",
+        "encounter_type": "story",
         "choices": {
             "1": "Thank the villager and prepare for the journey.",
             "2": "Decide to take the main road instead."
@@ -49,6 +53,7 @@
     },
     "5": {
         "description": "With the villager's warning in mind, you pack your supplies and head out toward the hidden path. As you leave the valley, you see dark clouds gathering over the distant mountains.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Venture onto the hidden path.",
             "2": "Turn back to the valley."
@@ -60,6 +65,7 @@
     },
     "6": {
         "description": "You begin your journey toward the Frostbound Peaks. The path ahead is steep and the weather grows colder with each step. After hours of walking, you reach a dense forest that blocks your way.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Enter the forest.",
             "2": "Search for another way around."
@@ -71,6 +77,7 @@
     },
     "7": {
         "description": "You decide to take the main road to the Frostbound Peaks. The journey is easier, but you sense that you may encounter trouble from bandits or other dangers along the way.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Continue down the main road.",
             "2": "Reconsider and take the hidden path."
@@ -82,6 +89,7 @@
     },
     "8": {
         "description": "You enter the forest, the trees towering above you, casting dark shadows on the path. You hear strange noises in the distance. Suddenly, a wild boar charges at you from the bushes!",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Fight the boar.",
             "2": "Try to dodge and escape."
@@ -93,6 +101,7 @@
     },
     "9": {
         "description": "You search for another way around the forest, but the terrain is rough, and the cold winds from the mountains make it difficult to continue. You realize that entering the forest may be the only option.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Enter the forest.",
             "2": "Turn back to the valley."
@@ -104,6 +113,7 @@
     },
     "10": {
         "description": "As you continue down the main road, you encounter a group of traveling merchants. They offer to sell you supplies for your journey to the Frostbound Peaks.",
+        "encounter_type": "dialogue",
         "choices": {
             "1": "Buy supplies from the merchants.",
             "2": "Decline and continue your journey."
@@ -115,6 +125,7 @@
     },
     "11": {
         "description": "You fight the wild boar, using your weapon to defend yourself. After a brief struggle, you manage to defeat it and continue through the forest.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Search the boar for useful items.",
             "2": "Continue deeper into the forest."
@@ -126,6 +137,7 @@
     },
     "12": {
         "description": "You manage to dodge the boar's attack and escape into the forest. After running for a while, you reach a clearing where you can catch your breath.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Rest for a moment.",
             "2": "Continue through the forest."
@@ -137,6 +149,7 @@
     },
     "13": {
         "description": "You purchase some supplies from the merchants, including food and a new weapon. Feeling better prepared, you continue your journey toward the Frostbound Peaks.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Continue toward the mountains.",
             "2": "Head back to the valley."
@@ -148,6 +161,7 @@
     },
     "14": {
         "description": "You continue your journey along the main road, the Frostbound Peaks looming in the distance. The air grows colder, and you can see snow on the ground ahead.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Push forward into the mountains.",
             "2": "Set up camp and rest."
@@ -159,6 +173,7 @@
     },
     "15": {
         "description": "You search the boar and find some useful items: meat for food and a sturdy pelt that may come in handy later. With your supplies replenished, you continue deeper into the forest.",
+        "encounter_type": "exploration",
         "choices": {
             "1": "Head toward the mountains.",
             "2": "Explore the forest further."
@@ -170,6 +185,7 @@
     },
     "16": {
         "description": "With the challenges of the Plentiful Valley behind you, you stand at the edge of the Frostbound Peaks. The cold wind bites at your skin, and the treacherous path ahead is shrouded in mist.\nYour journey to reclaim the Shattered Crown has truly begun. Ahead lies danger and untold mysteries, but also the hope of uniting Elyndor once more.\nChapter 1: Plentiful Valley complete. Prepare for Chapter 2: The Frostbound Peaks.",
+        "encounter_type": "story",
         "choices": {
             "1": "Continue to Chapter 2."
         },
