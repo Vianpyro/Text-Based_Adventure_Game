@@ -23,7 +23,7 @@ void Game::initialize() {
     gameState = GameState::MainMenu;
 }
 
-bool Game::isGameOver() {
+constexpr bool Game::isGameOver() const {
     return gameState == GameState::GameOver;
 }
 
