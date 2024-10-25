@@ -20,7 +20,7 @@ class Game {
  public:
     void endGame();
     void initialize();
-    constexpr bool isGameOver() const;
+    bool isGameOver() const;
     void processInput();
     void update();
     void showMainMenu();
