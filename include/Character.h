@@ -13,7 +13,6 @@ class Character {
     int strength;
     int intelligence;
     int agility;
-    int level;
 
  public:
     // Constructor
@@ -30,7 +29,6 @@ class Character {
     // Getters for character attributes
     std::string getName() const;
     int getHealth() const;
-    int getLevel() const;
     int getStrength() const;
     int getIntelligence() const;
     int getAgility() const;
@@ -39,9 +37,6 @@ class Character {
     virtual void attack(Character* target) = 0;
     virtual void defend() = 0;
     virtual void takeDamage(int damage);
-
-    // Level up the character
-    void levelUp();
 
     // Check if the character is still alive
     bool isAlive() const;
