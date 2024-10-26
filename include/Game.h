@@ -1,3 +1,4 @@
+// Copyright 2024 Vianney Veremme
 #ifndef INCLUDE_GAME_H_
 #define INCLUDE_GAME_H_
 
