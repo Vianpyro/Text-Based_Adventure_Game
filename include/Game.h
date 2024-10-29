@@ -2,10 +2,15 @@
 #ifndef INCLUDE_GAME_H_
 #define INCLUDE_GAME_H_
 
+#include <memory>
 #include <unordered_map>
 
+#include "Character.h"
+#include "Mage.h"
+#include "Rogue.h"
 #include "Story.h"
 #include "Utility.h"
+#include "Warrior.h"
 
 // Game constants
 extern const char* GAME_TITLE;
@@ -20,7 +25,7 @@ class Game {
  public:
     void endGame();
     void initialize();
-    bool isGameOver();
+    bool isGameOver() const;
     void processInput();
     void update();
     void showMainMenu();
@@ -30,6 +35,8 @@ class Game {
     GameState gameState;
     Story story;
 
+    std::unique_ptr<Character> character;
+    void chooseCharacter();
     void displayMainMenu();
     void loadNextStory();
     void processMainMenuInput();

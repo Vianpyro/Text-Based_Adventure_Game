@@ -6,10 +6,45 @@
 
 const char* GAME_TITLE = "Shattered Kingdom";
 
+void Game::chooseCharacter() {
+    bool validChoice = false;
+
+    while (!validChoice) {
+        std::cout << "Choose your character class:" << std::endl
+                  << "1. Mage" << std::endl
+                  << "2. Rogue" << std::endl
+                  << "3. Warrior" << std::endl;
+
+        int choice = getValidatedChoice();  // Get validated integer input
+
+        switch (choice) {
+            case 1:
+                character = std::make_unique<Mage>("PlayerMage");
+                validChoice = true;
+                break;
+            case 2:
+                character = std::make_unique<Rogue>("PlayerRogue");
+                validChoice = true;
+                break;
+            case 3:
+                character = std::make_unique<Warrior>("PlayerWarrior");
+                validChoice = true;
+                break;
+            default:
+                std::cout << "Invalid choice." << std::endl
+                          << "Please select a valid character class."
+                          << std::endl;
+                break;
+        }
+    }
+}
+
 void Game::displayMainMenu() {
-    std::cout << "Main Menu" << std::endl;
-    std::cout << "1. Start Game" << std::endl;
-    std::cout << "2. Quit" << std::endl;
+    std::cout << "Main Menu" << std::endl
+              << "1. Start Game" << std::endl
+              << "2. New Character" << std::endl
+              << "3. Load Character" << std::endl
+              << "0. Quit" << std::endl;
 }
 
 void Game::endGame() {
@@ -23,7 +58,7 @@ void Game::initialize() {
     gameState = GameState::MainMenu;
 }
 
-bool Game::isGameOver() {
+bool Game::isGameOver() const {
     return gameState == GameState::GameOver;
 }
 
@@ -55,14 +90,20 @@ void Game::processMainMenuInput() {
     int choice = getValidatedChoice();
 
     switch (choice) {
+        case 0:
+            std::cout << "Quitting game..." << std::endl;
+            gameState = GameState::GameOver;
+            break;
         case 1:
             std::cout << "Starting game..." << std::endl;
             gameState = GameState::InGame;
             story.printSegment();
             break;
         case 2:
-            std::cout << "Quitting game..." << std::endl;
-            gameState = GameState::GameOver;
+            chooseCharacter();
+            break;
+        case 3:
+            std::cout << "Loading character..." << std::endl;
             break;
         default:
             std::cout << "Invalid choice. Please try again." << std::endl;
